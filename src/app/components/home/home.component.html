@@ -1,0 +1,40 @@
+<div class="homeWraper py-5 container">
+  <div class="row w-100">
+    <div class="col-xs-12 col sm-12 md-6 col-lg-6">
+      <h1 class="px-5">List of all github users</h1>
+    </div>
+    <div class="col-xs-12 col sm-12 md-6 col-lg-6">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="user"
+        placeholder="Search" aria-label="Search" [(ngModel)]="searchUser" >
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="reloadList()">Reload List</button>
+      </form>
+    </div>
+  </div>
+  <div class="list-group">
+    <ul>
+      <li class="list-group-item list-group-item-action pointer" 
+      *ngFor="let user of allUser"
+      (click)="selectedUser(user)"
+      >
+      <div class="row">
+        <div class="col-xs-1 col sm-md-1 col-lg-1"> 
+          <div class="avatar pointer">
+            <img
+              [src]="user.avatar_url"
+              alt="image not found"
+              width="50"
+              height="40"
+            />
+            <span  class="align-self-center">{{avatarText}}</span>
+          </div>
+        </div>
+        <div class="col-xs-11 col sm-11 md-11 col-lg-11"> 
+          {{user.login}}
+        </div>
+      </div>
+    </li>
+    </ul>
+  </div>
+</div>
